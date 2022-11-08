@@ -18,7 +18,7 @@ import java.util.Random;
  */
 public class MiniGUI {
 
-    private static final String TITLE = "A very simple GUI application";
+    private static final String TITLE = "Solution";
     private static final int PROPORTION = 5;
     private final Random randomGenerator = new Random();
     private final JFrame frame = new JFrame(TITLE);
