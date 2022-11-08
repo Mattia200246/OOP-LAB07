@@ -43,9 +43,6 @@ public class MiniGUI {
         canvas.add(result, BorderLayout.NORTH);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-
-        
 
 
         /*
