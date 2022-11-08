@@ -57,6 +57,7 @@ public final class DrawNumberSwingView implements DrawNumberView {
                     controller.newAttempt(Integer.parseInt(tNumber.getText()));
                 } catch (NumberFormatException exception) {
                     showMessageDialog(frame, "An integer please..");
+                    
                 }
             }
         });
