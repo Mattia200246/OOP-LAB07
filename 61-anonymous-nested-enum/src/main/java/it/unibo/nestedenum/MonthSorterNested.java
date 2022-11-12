@@ -39,14 +39,29 @@ public final class MonthSorterNested implements MonthSorter {
 
         private final int days;
 
-        public static Month fromString(final String name){
-            try{
+        public static Month fromString(final String name) {
+            Objects.requireNonNull(name);
+            try {
                 return valueOf(name);
-            }catch(IllegalArgumentException e){
-                throw new IllegalArgumentException("no match");
-
+            } catch (IllegalArgumentException e) {
+                // Fallback to manual scan before giving up
+                Month match = null;
+                for (final Month month: values()) {
+                    if (month.toString().toLowerCase(Locale.ROOT).startsWith(name.toLowerCase(Locale.ROOT))) {
+                        if (match != null) {
+                            throw new IllegalArgumentException(
+                                name + " is ambiguous: both " + match + " and " + month + " would be valid matches",
+                                e
+                            );
+                        }
+                        match = month;
+                    }
+                }
+                if (match == null) {
+                    throw new IllegalArgumentException("No matching months for " + name, e);
+                }
+                return match;
             }
-           
         }
     }
 }
