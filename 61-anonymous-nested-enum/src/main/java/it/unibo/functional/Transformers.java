@@ -108,6 +108,10 @@ public final class Transformers {
      * @param <I> elements type
      */
     public static <I> List<I> reject(final Iterable<I> base, final Function<I, Boolean> test) {
-        return null;
+        return select(base, new Function<I,Boolean>() {
+            public Boolean call(final I input){
+                return !test.call(input);
+            }
+        });
     }
 }
