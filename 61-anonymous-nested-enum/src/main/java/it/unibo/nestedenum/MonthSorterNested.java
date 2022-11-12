@@ -12,7 +12,7 @@ public final class MonthSorterNested implements MonthSorter {
     @Override
     public Comparator<String> sortByDays() {
         return null;
-    }
+    } 
 
     @Override
     public Comparator<String> sortByOrder() {
@@ -63,5 +63,14 @@ public final class MonthSorterNested implements MonthSorter {
                 return match;
             }
         }
+    }
+
+    private static class SortByMonthOrder implements Comparator<String>{
+
+        @Override
+        public int compare(final String o1, final String o2) {
+            return Month.fromString(o1).compareTo(Month.fromString(o2));
+        }
+
     }
 }
